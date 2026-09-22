@@ -1298,6 +1298,15 @@
       body: JSON.stringify(formData) 
     }).catch(error => console.error('Lỗi đồng bộ:', error));
   }
+        // Tự động bắt sự kiện khi click các nút Nhập/Xuất kho để gửi dữ liệu
+  document.addEventListener('click', function(event) {
+    // Kiểm tra nếu bấm vào nút Nhập kho hoặc Xuất kho
+    if (event.target && (event.target.innerText.includes('NHẬP KHO') || event.target.innerText.includes('XUẤT KHO'))) {
+      console.log('Đã phát hiện thao tác Nhập/Xuất kho!');
+      // Bạn có thể truyền dữ liệu mẫu hoặc dữ liệu từ form vào đây để sync
+      // syncToGoogleSheets({ action: event.target.innerText, time: new Date().toLocaleString() });
+    }
+  });
     </script>
 </body>
 </html>
