@@ -1329,16 +1329,18 @@ document.addEventListener('click', function(event) {
     if (event.target && (event.target.innerText.includes('NHẬP KHO') || event.target.innerText.includes('XUẤT KHO'))) {
         console.log('Đã phát hiện thao tác Nhập/Xuất kho!');
         
-        let payload = {
-            "Mã VT": "DU0626",                    
-            "Tên vật tư": "Dù/Ô",               
-            "ĐVT": "Chiếc",                      
-            "Chi nhánh": "Hà Nội",               
-            "Tồn đầu kỳ": 0,                     
-           "Nhập trong kỳ": event.target.innerText.includes('NHẬP') ? Number(qtyValue) : 0,
-           "Xuất trong kỳ": event.target.innerText.includes('XUẤT') ? Number(qtyValue) : 0,
-            "Tồn cuối kỳ": 0                     
-        };
+       let qtyValue = document.getElementById('soLuong') ? document.getElementById('soLuong').value : 1; 
+
+    let payload = {
+        "Mã VT": "DU0626",
+        "Tên vật tư": "Dù/Ô",
+        "ĐVT": "Chiếc",
+        "Chi nhánh": "Hà Nội",
+        "Tồn đầu kỳ": 0,
+        "Nhập trong kỳ": event.target.innerText.includes('NHẬP') ? Number(qtyValue) : 0,
+        "Xuất trong kỳ": event.target.innerText.includes('XUẤT') ? Number(qtyValue) : 0,
+        "Tồn cuối kỳ": 0
+    };
         
         syncToGoogleSheets(payload);
     }
