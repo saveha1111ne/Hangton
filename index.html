@@ -1289,6 +1289,15 @@
         // Khởi động
         window.onload = initApp;
 
+        // Hàm đồng bộ dữ liệu tự động lên Google Sheets
+  function syncToGoogleSheets(formData) {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwSAdeQiEihJuCF0HpQMYUcZ--r5u6m0LJkBTB5qK-Ex-Xp7ObFO0KgfNvEYKdcjUonQ/exec';
+    fetch(scriptURL, { 
+      method: 'POST', 
+      mode: 'no-cors', 
+      body: JSON.stringify(formData) 
+    }).catch(error => console.error('Lỗi đồng bộ:', error));
+  }
     </script>
 </body>
 </html>
